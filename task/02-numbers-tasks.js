@@ -22,7 +22,7 @@
  *   5, 5  => 25
  */
 function getRectangleArea(width, height) {
-    throw new Error('Not implemented');
+    return width * height;
 }
 
 
@@ -38,7 +38,7 @@ function getRectangleArea(width, height) {
  *   0    => 0
  */
 function getCicleCircumference(radius) {
-    throw new Error('Not implemented');
+    return 2 * Math.PI * radius;
 }
 
 /**
@@ -53,12 +53,13 @@ function getCicleCircumference(radius) {
  *  10, 0  => 5
  *  -3, 3  => 0
  */
+
 function getAverage(value1, value2) {
-    throw new Error('Not implemented');
+    return (BigInt(value1) + BigInt(value2)) / 2n;
 }
 
 /**
- * Returns a distance beetween two points by cartesian coordinates.
+ * Returns a distance between two points by cartesian coordinates.
  *
  * @param {number} x1
  * @param {number} y1
@@ -73,7 +74,11 @@ function getAverage(value1, value2) {
  *   (-5,0) (10,-10) => 18.027756377319946
  */
 function getDistanceBetweenPoints(x1, y1, x2, y2) {
-    throw new Error('Not implemented');
+    let x = x2 - x1;
+    let y = y2 - y1;
+    x *= x;
+    y *= y;
+    return Math.sqrt(x + y);
 }
 
 /**
@@ -89,7 +94,7 @@ function getDistanceBetweenPoints(x1, y1, x2, y2) {
  *   5*x = 0         => 0
  */
 function getLinearEquationRoot(a, b) {
-    throw new Error('Not implemented');
+    return -b / a;
 }
 
 
@@ -111,7 +116,7 @@ function getLinearEquationRoot(a, b) {
  *   (0,1) (1,2)     => 0
  */
 function getAngleBetweenVectors(x1, y1, x2, y2) {
-    throw new Error('Not implemented');
+    return Math.acos((x1*x2 + y1*y2)/(Math.hypot(x1 + y1) * Math.hypot(x2 + y2)));
 }
 
 /**
@@ -127,7 +132,7 @@ function getAngleBetweenVectors(x1, y1, x2, y2) {
  *     0     => 0
  */
 function getLastDigit(value) {
-    throw new Error('Not implemented');
+    return value.toString().slice(-1);
 }
 
 
@@ -143,7 +148,7 @@ function getLastDigit(value) {
  * '-525.5'     => -525.5
  */
 function parseNumberFromString(value) {
-    throw new Error('Not implemented');
+    return parseFloat(value);
 }
 
 /**
@@ -160,7 +165,8 @@ function parseNumberFromString(value) {
  *   1,2,3   => 3.741657386773941
  */
 function getParallelipidedDiagonal(a,b,c) {
-    throw new Error('Not implemented');
+    let diagonal = Math.pow(a, 2) + Math.pow(b, 2) + Math.pow(c, 2);
+    return Math.sqrt(diagonal);
 }
 
 /**
@@ -181,7 +187,20 @@ function getParallelipidedDiagonal(a,b,c) {
  *   1678, 3  => 2000
  */
 function roundToPowerOfTen(num, pow) {
-    throw new Error('Not implemented');
+     switch(pow) {
+        case 0: 
+            return num;
+            break;
+        case 1:
+            return Math.round(num / 10) * 10;
+            break;
+        case 2:
+            return Math.round(num / 100) * 100;
+            break;
+        case 3:
+            return Math.round(num / 1000) * 1000;
+            break;
+    }
 }
 
 /**
@@ -202,7 +221,11 @@ function roundToPowerOfTen(num, pow) {
  *   17 => true
  */
 function isPrime(n) {
-    throw new Error('Not implemented');
+    let prime = n > 1;
+    for(let i=2; i < n; i++) {
+        if (n % i == 0) prime = false;
+    }
+    return prime;
 }
 
 /**
@@ -221,7 +244,9 @@ function isPrime(n) {
  *   toNumber(new Number(42), 0) => 42
  */
 function toNumber(value, def) {
-    throw new Error('Not implemented');
+    if(Number(value)){
+        return Number(value)
+    } else return def;
 }
 
 module.exports = {
