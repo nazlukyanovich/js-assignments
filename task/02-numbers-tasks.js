@@ -55,7 +55,7 @@ function getCicleCircumference(radius) {
  */
 
 function getAverage(value1, value2) {
-    return (BigInt(value1) + BigInt(value2)) / 2n;
+    return value1 / 2 + value2 / 2;
 }
 
 /**
