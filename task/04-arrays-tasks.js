@@ -580,7 +580,10 @@ function group(array, keySelector, valueSelector) {
  *   ['one','two','three'], x=>x.split('')  =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
 function selectMany(arr, childrenSelector) {
-    return arr.map((n) => childrenSelector(n)).flat();
+   return arr.reduce((acc, n) => {
+      acc.push(...childrenSelector(n));
+      return acc;
+    }, []);
 }
 
 
