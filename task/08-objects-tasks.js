@@ -177,12 +177,12 @@ const cssSelectorBuilder = {
         this.checkOrder(x);
     },
     checkUnique(x) {
-        let arr = [1, 2, 6];
+        /* let arr = [1, 2, 6];
         Array.includes = function() {
             let [first, ...rest] = arguments;
             return Array.prototype.includes.apply(first, rest);
-        }
-        if (this.propID === x && arr.includes(x, 0)) {
+        }*/
+        if (this.propID === x && (x === 1 || x === 2 || x === 6)) {
             throw new Error ('Element, id and pseudo-element should not occur more then one time inside the selector');
         }
     },
