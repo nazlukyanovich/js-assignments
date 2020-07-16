@@ -178,7 +178,7 @@ const cssSelectorBuilder = {
     },
     checkUnique(x) {
         let arr = [1, 2, 6];
-        if (this.propID === x && arr.includes(x)) {
+        if (this.propID === x && arr.includes(x, 0)) {
             throw new Error ('Element, id and pseudo-element should not occur more then one time inside the selector');
         }
     },
