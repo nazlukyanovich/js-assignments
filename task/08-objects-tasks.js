@@ -113,34 +113,80 @@ function fromJSON(proto, json) {
  */
 
 const cssSelectorBuilder = {
+    string: '',
 
     element: function(value) {
-        throw new Error('Not implemented');
+        let cssObject1 = Object.create(cssSelectorBuilder);
+        cssObject1.string = `${this.string}${value}`;
+        cssObject1.propID = 1;
+        this.checkCorrect(cssObject1.propID);
+        return cssObject1;
     },
 
     id: function(value) {
-        throw new Error('Not implemented');
+        let cssObject2 = Object.create(cssSelectorBuilder);
+        cssObject2.string = `${this.string}#${value}`;
+        cssObject2.propID = 2;
+        this.checkCorrect(cssObject2.propID);
+        return cssObject2;
     },
 
     class: function(value) {
-        throw new Error('Not implemented');
+        let cssObject3 = Object.create(cssSelectorBuilder);
+        cssObject3.string = `${this.string}.${value}`;
+        cssObject3.propID = 3;
+        this.checkCorrect(cssObject3.propID);
+        return cssObject3;
     },
 
     attr: function(value) {
-        throw new Error('Not implemented');
+        let cssObject4 = Object.create(cssSelectorBuilder);
+        cssObject4.string = `${this.string}[${value}]`;
+        cssObject4.propID = 4;
+        this.checkCorrect(cssObject4.propID);
+        return cssObject4;
     },
 
     pseudoClass: function(value) {
-        throw new Error('Not implemented');
+        let cssObject5 = Object.create(cssSelectorBuilder);
+        cssObject5.string = `${this.string}:${value}`;
+        cssObject5.propID = 5;
+        this.checkCorrect(cssObject5.propID);
+        return cssObject5;
     },
 
     pseudoElement: function(value) {
-        throw new Error('Not implemented');
+        let cssObject6 = Object.create(cssSelectorBuilder);
+        cssObject6.string = `${this.string}::${value}`;
+        cssObject6.propID = 6;
+        this.checkCorrect(cssObject6.propID);
+        return cssObject6;
     },
 
     combine: function(selector1, combinator, selector2) {
-        throw new Error('Not implemented');
+        let cssObject7 = Object.create(cssSelectorBuilder);
+        cssObject7.string = `${selector1.string} ${combinator} ${selector2.string}`;
+        return cssObject7;
     },
+
+    stringify() {
+        return this.string;
+    },
+
+    checkCorrect(x) {
+        this.checkUnique(x);
+        this.checkOrder(x);
+    },
+    checkUnique(x) {
+        if (this.propID === x && [1, 2, 6].includes(x)) {
+            throw new Error ('Element, id and pseudo-element should not occur more then one time inside the selector');
+        }
+    },
+    checkOrder(x) {
+        if (this.propID > x) {
+            throw new Error('Selector parts should be arranged in the following order: element, id, class, attribute, pseudo-class, pseudo-element');
+        }
+    }
 };
 
 
