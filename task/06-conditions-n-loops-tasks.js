@@ -214,8 +214,8 @@ function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
     let iei = ')';
     let aValue = a;
     let bValue = b;
-    if (isStartIncluded) {isi = '['};
-    if (isEndIncluded) {iei = ']'}
+    if (isStartIncluded) isi = '['
+    if (isEndIncluded) iei = ']'
     if (aValue > bValue) {
         aValue = b;
         bValue = a;
