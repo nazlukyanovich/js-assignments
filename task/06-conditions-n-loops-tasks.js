@@ -30,11 +30,11 @@
  *
  */
 function getFizzBuzz(num) {
-    if (num % 3 == 0) {
-        if (num % 5 == 0) return 'FizzBuzz'
+    if (num % 3 === 0) {
+        if (num % 5 === 0) return 'FizzBuzz'
         return 'Fizz'
     }
-    if (num % 5 == 0) return 'Buzz';
+    if (num % 5 === 0) return 'Buzz';
     return num
 }
 
@@ -291,7 +291,7 @@ function isCreditCardNumber(ccn) {
         s += number;
         doubleNumber = !doubleNumber;
     }
-    return s % 10 == 0;
+    return s % 10 === 0;
 }
 
 
@@ -348,11 +348,11 @@ function isBracketsBalanced(str) {
         if (open.indexOf(str[i]) >= 0) {
             stack.push(open.indexOf(str[i]));
         }       
-        else if (close[stack.pop()] != str[i]) {
+        else if (close[stack.pop()] !== str[i]) {
             return false;
         }  
     }
-    return stack.length == 0;
+    return stack.length === 0;
 }
 
 
@@ -510,7 +510,7 @@ function getMatrixProduct(m1, m2) {
  */
 function evaluateTicTacToePosition(position) {
     let check = function(x1, x2, x3) {
-        return x1 === x2 && x2 === x3 && x1 != undefined;
+        return x1 === x2 && x2 === x3 && x1 !== undefined;
     }
     for (let i = 0; i < 3; i++) {
         if (check(position[i][0], position[i][1], position[i][2])) 
